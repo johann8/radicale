@@ -9,4 +9,5 @@ if [ ! -f "$USER_FILE" ]; then
 fi
 
 echo "Starting Server";
-python -u -m radicale;
+#python -u -m radicale;
+/app/bin/python /app/bin/radicale
