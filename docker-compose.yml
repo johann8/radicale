@@ -1,0 +1,22 @@
+version: '3.7'
+networks:
+  radicaleNet:
+    ipam:
+      driver: default
+      config:
+        - subnet: ${SUBNET}.0/24
+
+services:
+  app:
+    image: jhahn/radicale:${VERSION}
+    container_name: radicale
+    restart: unless-stopped
+    volumes:
+      - ${DOCKERDIR}/data:/data
+    #ports:
+      #- 5232:5232
+    environment:
+      - TZ=${TZ}
+    networks:
+      - radicaleNet
+
