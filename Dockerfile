@@ -10,7 +10,7 @@ ARG DEPENDENCIES=bcrypt
 
 RUN apk add --no-cache alpine-sdk libffi-dev \
     && python -m venv /app/venv \
-    && /app/venv/bin/pip install --no-cache-dir "Radicale[${DEPENDENCIES}] @ https://github.com/Kozea/Radicale/archive/${VERSION}.tar.gz"
+    && /app/venv/bin/pip install --no-cache-dir "Radicale[${DEPENDENCIES}] @ https://github.com/Kozea/Radicale/archive/${RADICALE_VERSION}.tar.gz"
     #RUN pip install --user radicale[bcrypt]==$RADICALE_VERSION
 
 FROM python:3-alpine
