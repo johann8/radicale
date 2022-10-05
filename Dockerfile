@@ -2,11 +2,16 @@ FROM python:3-alpine as builder
 
 WORKDIR /app
 
-ARG RADICALE_VERSION=3.1.7
+# Version of Radicale
+ARG RADICALE_VERSION=master
 
-RUN apk add --no-cache alpine-sdk libffi-dev
-RUN pip install --user radicale[bcrypt]==$RADICALE_VERSION
+# Optional dependencies (e.g. bcrypt)
+ARG DEPENDENCIES=bcrypt
 
+RUN apk add --no-cache alpine-sdk libffi-dev \
+    && python -m venv /app/venv \
+    && /app/venv/bin/pip install --no-cache-dir "Radicale[${DEPENDENCIES}] @ https://github.com/Kozea/Radicale/archive/${VERSION}.tar.gz"
+    #RUN pip install --user radicale[bcrypt]==$RADICALE_VERSION
 
 FROM python:3-alpine
 
