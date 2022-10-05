@@ -9,3 +9,8 @@ htpasswd_encryption = bcrypt
 
 [storage]
 filesystem_folder = /data/data
+
+[logging]
+# Threshold for the logger
+# Value: debug | info | warning | error | critical
+level = info
